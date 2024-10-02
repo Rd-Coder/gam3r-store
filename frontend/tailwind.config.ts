@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'violet-dark': {
+          DEFAULT: '#0e001d',
+          foreground: '#fff',
+        }
       },
     },
   },
