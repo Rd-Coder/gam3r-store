@@ -3,8 +3,13 @@ import { Produto } from "."
 const QTDE_MAX_PARCELAS = 12
 const TAXA_JUROS_MENSAL = 0.0167
 
-export { produtos, QTDE_MAX_PARCELAS, TAXA_JUROS_MENSAL }
+export { produtos, QTDE_MAX_PARCELAS, TAXA_JUROS_MENSAL, buscarProdutoPorId }
 
+function buscarProdutoPorId(id: number): Produto | undefined {
+    if (id >= produtos.length || id < 1)
+        return undefined;
+    return produtos[--id];
+}
 
 const produtos: Produto[] = [
     {
