@@ -1,6 +1,8 @@
+import { GridProdutos } from "@/components/produto";
+import produtos from "@/core/produto/constants";
+
 export default function Home() {
   return (
-    <div>
-    </div>
+    <GridProdutos className="mt-10"/>
   );
 }

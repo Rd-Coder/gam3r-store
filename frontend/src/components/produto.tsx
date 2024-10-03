@@ -2,12 +2,38 @@
 
 import { Produto } from "@/core";
 import Moeda from "@/core/utils/moeda";
-import { IconShoppingCartPlus } from "@tabler/icons-react";
+import { IconShoppingCartPlus, IconDevicesPcOff } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import StarReview from "./shared/review";
+import produtos from "@/core/produto/constants";
 
-export default function ProdutoItem(props: ProdutoItemProps) {
+
+export function GridProdutos(props: {className?: string}) {
+    if (produtos.length)
+        return (
+            <div className={`
+                grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5
+                ${props.className ?? ''}
+            `}> {
+                produtos.map( (produto) => <ProdutoItem
+                    key={produto.id} produto={produto} href={'/produto/'+produto.id}
+                    className="relative"
+                />)
+            } </div>
+        );
+    else
+        return <ProdutoNaoEncontrado semBotaoVoltar className={`flex-1 ${props.className ?? ''}`}/>;
+}
+
+
+interface ProdutoItemProps {
+    produto: Produto,
+    href?: string,
+    className?: string,
+}
+
+export function ProdutoItem(props: ProdutoItemProps) {
     const { produto, href='', className='' } = props;
 
     return <Link
@@ -53,8 +79,24 @@ export default function ProdutoItem(props: ProdutoItemProps) {
     </Link>;
 }
 
-interface ProdutoItemProps {
-    produto: Produto,
-    href?: string,
+interface ProdutoNaoEncontradoProps {
+    semBotaoVoltar?: boolean,
     className?: string,
+}
+
+export function ProdutoNaoEncontrado(props: ProdutoNaoEncontradoProps) {
+    return (
+        <div className={`
+            flex flex-col justify-center items-center text-violet-300
+            ${props.className ?? ''}
+        `}>
+            <IconDevicesPcOff size={180} stroke={0.5} />
+            <span className="text-violet-300 font-light">Produto não encontrado</span>
+            {!props.semBotaoVoltar && (
+                <Link href="/" className="button bg-violet-700 text-white mt-5">
+                    Voltar
+                </Link>
+            )}
+        </div>
+    )
 }
