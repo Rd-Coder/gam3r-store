@@ -2,6 +2,7 @@ import { Produto } from "@/core";
 import { buscarProdutoPorId } from "@/core/produto/constants";
 
 import { ProdutoNaoEncontrado } from "@/components/produto/shared";
+import DetalhesProduto from "@/components/produto/detalhes";
 
 export default function PaginaProduto(props: any) {
     const { id } = props.params;
@@ -11,6 +12,8 @@ export default function PaginaProduto(props: any) {
         return <ProdutoNaoEncontrado hrefBotaoVoltar='/'/>;
 
     return (
-        <div>Produto: {produto.nome} </div>
+        <div className="boxed flex flex-col gap-20 py-10">
+            <DetalhesProduto produto={produto} />
+        </div>
     );
 }
