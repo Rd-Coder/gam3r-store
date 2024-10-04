@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import StarReview from "./shared/review";
 import produtos from "@/core/produto/constants";
+import { ButtonAction, ButtonLink } from "./shared/button";
 
 
 export function GridProdutos(props: {className?: string}) {
@@ -62,16 +63,14 @@ export function ProdutoItem(props: ProdutoItemProps) {
                     por {Moeda.formatar(produto.precoPromocional)}
                 </span>
             </div>
-            <button
-            className="button-action"
-            onClick={(e)=>{
-                e.preventDefault();
-                console.log('Adicionar ao carrinho');
-            }}
-            >
-                <IconShoppingCartPlus size={20}/>
-                <span>Adicionar</span>
-            </button>
+            <ButtonAction
+                label="Adicionar"
+                icon={<IconShoppingCartPlus size={20}/>}
+                onClick={(e)=>{
+                    e.preventDefault();
+                    console.log('Adicionar ao carrinho');
+                }}
+            />
         </div>
     </Link>;
 }
@@ -90,9 +89,9 @@ export function ProdutoNaoEncontrado(props: ProdutoNaoEncontradoProps) {
             <IconDevicesPcOff size={180} stroke={0.5} />
             <span className="text-violet-300 font-light">Produto não encontrado</span>
             {!props.semBotaoVoltar && (
-                <Link href="/" className="button-link mt-5">
-                    Voltar
-                </Link>
+                <ButtonLink 
+                    href="/" label="Voltar" className="mt-5"
+                />
             )}
         </div>
     )
