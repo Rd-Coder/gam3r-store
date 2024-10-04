@@ -76,6 +76,7 @@ export function ProdutoItem(props: ProdutoItemProps) {
                 className="button-2"
                 label="Adicionar"
                 icon={<IconShoppingCartPlus size={20}/>}
+                onHoverOutlined
                 onClick={(e)=>{
                     e.preventDefault();
                     console.log('Adicionar ao carrinho');

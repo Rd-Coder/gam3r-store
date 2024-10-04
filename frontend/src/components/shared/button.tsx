@@ -6,14 +6,14 @@ abstract class ButtonProps {
     className?: string = 'button-1';
     label?: string = '';
     icon?: any;
-    onHoverHasBorder?: boolean
+    onHoverOutlined?: boolean
     onClick?: (e: any) => void
 }
 
 export function ButtonAction(props: ButtonProps) {
     return (
         <button
-        className={`button-1 ${props.onHoverHasBorder && 'button-border'} ${props.className}`}
+        className={`button-1 ${props.onHoverOutlined && 'button-border'} ${props.className}`}
         onClick={props.onClick}
         >
             {props.icon}
