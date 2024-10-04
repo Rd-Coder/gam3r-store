@@ -52,7 +52,7 @@ export function ProdutoItem(props: ProdutoItemProps) {
             ${className}
         `}
     >
-        <StarReview nota={produto.nota} className="absolute self-end m-1.5"/>
+        <StarReview nota={produto.nota} className="absolute self-end m-2.5"/>
         <div className="w-full h-48 relative">
             <Image
                 src={produto.imagem} alt="Imagem do Produto" fill
@@ -61,7 +61,9 @@ export function ProdutoItem(props: ProdutoItemProps) {
         </div>
         <div className="flex flex-col flex-1 gap-3 p-5 border-t border-white/10">
             <h2 className="text-lg font-semibold">{produto.nome}</h2>
-            <p className="text-sm border-b border-dashed mb-2">{produto.especificacoes.destaque}</p>
+            <p className="self-start text-sm border-b border-dashed relative mb-2">
+                {produto.especificacoes.destaque}
+            </p>
             <div className="flex flex-col mt-auto">
                 <span className="text-sm text-gray-400 line-through">
                     de {Moeda.formatar(produto.precoBase)}
@@ -71,6 +73,7 @@ export function ProdutoItem(props: ProdutoItemProps) {
                 </span>
             </div>
             <ButtonAction
+                className="button-2"
                 label="Adicionar"
                 icon={<IconShoppingCartPlus size={20}/>}
                 onClick={(e)=>{
