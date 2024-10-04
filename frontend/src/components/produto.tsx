@@ -63,14 +63,11 @@ export function ProdutoItem(props: ProdutoItemProps) {
                 </span>
             </div>
             <button
-                className="
-                flex flex-row justify-center items-center gap-2 h-8
-                rounded-full bg-violet-700 border-emerald-500 hover:border-2
-                "
-                onClick={(e)=>{
-                    e.preventDefault();
-                    console.log('Adicionar ao carrinho');
-                }}
+            className="button-action"
+            onClick={(e)=>{
+                e.preventDefault();
+                console.log('Adicionar ao carrinho');
+            }}
             >
                 <IconShoppingCartPlus size={20}/>
                 <span>Adicionar</span>
@@ -93,7 +90,7 @@ export function ProdutoNaoEncontrado(props: ProdutoNaoEncontradoProps) {
             <IconDevicesPcOff size={180} stroke={0.5} />
             <span className="text-violet-300 font-light">Produto não encontrado</span>
             {!props.semBotaoVoltar && (
-                <Link href="/" className="button bg-violet-700 text-white mt-5">
+                <Link href="/" className="button-link mt-5">
                     Voltar
                 </Link>
             )}

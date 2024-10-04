@@ -30,4 +30,25 @@ body {
   .boxed {
     @apply px-10 mx-auto max-w-7xl w-full;
   }
+
+  .button-base {
+    @apply flex flex-row justify-center items-center gap-2;
+    @apply rounded-full text-white bg-violet-700;
+  }
+
+  .button-1 {
+    @apply button-base;
+    @apply h-9 px-9;
+    @apply text-sm font-semibold;
+  }
+
+  .button-2 {
+    @apply button-base;
+    @apply h-8 font-light text-base;
+  }
+
+  .button-border {
+    @apply border-emerald-500 hover:border-2;
+  }
+
 }

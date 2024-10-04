@@ -3,16 +3,17 @@ import Link from "next/link"
 import React from "react"
 
 abstract class ButtonProps {
-    className?: string = '';
+    className?: string = 'button-1';
     label?: string = '';
     icon?: any;
+    onHoverHasBorder?: boolean
     onClick?: (e: any) => void
 }
 
 export function ButtonAction(props: ButtonProps) {
     return (
         <button
-        className={`button-action ${props.className}`}
+        className={`button-1 ${props.onHoverHasBorder && 'button-border'} ${props.className}`}
         onClick={props.onClick}
         >
             {props.icon}
@@ -27,9 +28,8 @@ interface ButtonLinkProps extends ButtonProps {
 
 export function ButtonLink(props: ButtonLinkProps) {
     return (
-        <Link href={props.href} className={`button-link ${props.className}`}>
-            {props.icon}
-            <span>{props.label}</span>
+        <Link href={props.href}>
+            <ButtonAction {...(props as ButtonProps)} />
         </Link>
     );
 }
