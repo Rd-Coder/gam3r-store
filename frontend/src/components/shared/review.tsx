@@ -1,3 +1,5 @@
+'use client'
+
 import { IconStar, IconStarFilled, IconStarHalfFilled } from "@tabler/icons-react";
 
 export default function StarReview(props: StarReviewProps) {
