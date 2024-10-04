@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Tag from "../shared/tag";
 import { ProdutoConsumerProps } from "./shared";
 import { ButtonAction } from "../shared/button";
+import useParcelamento from "@/data/hooks/parcelamento";
+import Moeda from "@/core/utils/moeda";
 
 export default function DetalhesProduto(props: ProdutoConsumerProps) {
     const { produto } = props;
@@ -50,10 +52,10 @@ function BannerCompra(props: ProdutoConsumerProps) {
     const router = useRouter();
     const { produto } = props
     // const { adicionarItem } = useCarrinho()
-    // const parcelamento = useParcelamento(produto.precoPromocional)
+    const parcelamento = useParcelamento(produto.precoPromocional);
 
     return (
-        <div className="flex">
+        <div className="flex justify-between">
             <div className="flex flex-col border-r border-zinc-500 pr-5">
                 <div className="line-through text-zinc-400">de R$ {produto?.precoBase}</div>
                 <div className="text-2xl font-semibold">
@@ -62,10 +64,10 @@ function BannerCompra(props: ProdutoConsumerProps) {
                     <span className="text-base text-zinc-300">à vista</span>
                 </div>
             </div>
-            {/* <div className="flex-1 flex flex-col text-2xl font-semibold text-zinc-400 pl-5">
+            <div className="flex-1 flex flex-col text-2xl font-semibold text-zinc-400 pl-5">
                 <span className="text-base text-zinc-300">{parcelamento.qtdeParcelas}x de</span>
-                {Moeda.formatar(parcelamento.valorParcela)}{' '}
-            </div> */}
+                {Moeda.formatar(parcelamento.valorParcela)}
+            </div>
             <div className="flex gap-2 items-center">
                 <ButtonAction
                     label="Adicionar"
@@ -86,11 +88,11 @@ function BannerCompra(props: ProdutoConsumerProps) {
 
 function Especificacoes(props: ProdutoConsumerProps) {
     const { produto } = props
-    return produto ? (
+    return (
         <div className="flex-1 flex flex-col gap-1">
             <Tag
                 label={produto.especificacoes.destaque!}
-                icone={<IconTag size={15}/>} outlined 
+                icone={<IconTag size={15}/>} outlined
                 className="flex self-start mb-3"
             />
             {produto.especificacoes 
@@ -106,5 +108,5 @@ function Especificacoes(props: ProdutoConsumerProps) {
                     ))
             }
         </div>
-    ) : null
+    );
 }
