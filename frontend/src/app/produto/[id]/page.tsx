@@ -8,7 +8,7 @@ export default function PaginaProduto(props: any) {
     const produto: Produto | undefined = buscarProdutoPorId(+id);
     
     if (!produto)
-        return <ProdutoNaoEncontrado/>;
+        return <ProdutoNaoEncontrado hrefBotaoVoltar='/'/>;
 
     return (
         <div>Produto: {produto.nome} </div>

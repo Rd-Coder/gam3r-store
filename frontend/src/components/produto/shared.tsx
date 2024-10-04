@@ -22,7 +22,7 @@ export function ProdutoNaoEncontrado(props: ProdutoNaoEncontradoProps) {
         `}>
             <IconDevicesPcOff size={180} stroke={0.5} />
             <span className="text-violet-300 font-light">Produto não encontrado</span>
-            {!props.hrefBotaoVoltar && (
+            {props.hrefBotaoVoltar && (
                 <ButtonLink
                     href={props.hrefBotaoVoltar ?? ''} label="Voltar" className="mt-5"
                 />
