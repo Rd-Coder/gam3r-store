@@ -5,12 +5,19 @@ import Moeda from "@/core/utils/moeda";
 import { IconShoppingCartPlus, IconDevicesPcOff } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
-import StarReview from "./shared/review";
-import produtos from "@/core/produto/constants";
-import { ButtonAction, ButtonLink } from "./shared/button";
+import StarReview from "../shared/review";
+import { ButtonAction } from "../shared/button";
+import { ProdutoNaoEncontrado } from "./shared";
 
 
-export function GridProdutos(props: {className?: string}) {
+interface GridProdutoProps {
+    produtos: Produto[]
+    className?: string
+}
+
+export function GridProdutos(props: GridProdutoProps) {
+    const { produtos } = props;
+
     if (produtos.length)
         return (
             <div className={`
@@ -24,7 +31,7 @@ export function GridProdutos(props: {className?: string}) {
             } </div>
         );
     else
-        return <ProdutoNaoEncontrado semBotaoVoltar className={`flex-1 ${props.className ?? ''}`}/>;
+        return <ProdutoNaoEncontrado className={`flex-1 ${props.className ?? ''}`}/>;
 }
 
 
@@ -73,26 +80,4 @@ export function ProdutoItem(props: ProdutoItemProps) {
             />
         </div>
     </Link>;
-}
-
-interface ProdutoNaoEncontradoProps {
-    semBotaoVoltar?: boolean,
-    className?: string,
-}
-
-export function ProdutoNaoEncontrado(props: ProdutoNaoEncontradoProps) {
-    return (
-        <div className={`
-            flex flex-col justify-center items-center text-violet-300
-            ${props.className ?? ''}
-        `}>
-            <IconDevicesPcOff size={180} stroke={0.5} />
-            <span className="text-violet-300 font-light">Produto não encontrado</span>
-            {!props.semBotaoVoltar && (
-                <ButtonLink 
-                    href="/" label="Voltar" className="mt-5"
-                />
-            )}
-        </div>
-    )
 }

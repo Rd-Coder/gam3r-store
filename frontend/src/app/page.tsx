@@ -1,8 +1,8 @@
-import { GridProdutos } from "@/components/produto";
+import { GridProdutos } from "@/components/produto/grid";
 import produtos from "@/core/produto/constants";
 
 export default function Home() {
   return (
-    <GridProdutos className="mt-10"/>
+    <GridProdutos produtos={produtos} className="mt-10"/>
   );
 }
